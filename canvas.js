@@ -13,7 +13,7 @@ let mousePosi = {
     x: 50,
     y: 50
 }
-
+// dddddddddddd
 const circle = function (x, y, radius, fillCircle) {
     ctx.beginPath()
     ctx.arc(x, y, radius, 0, Math.PI * 2, false)
