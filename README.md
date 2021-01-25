@@ -1,2 +1,2 @@
 # Bee
-This is Bee from JS for children
+This is a Bee from "JavaScript for Kids" by Nick Morgan
