@@ -1,2 +1,2 @@
 # Bee
-Bee from JS for children
+This is Bee from JS for children
