@@ -1,0 +1,91 @@
+
+body{
+    /* background-color: rgb(228, 153, 62); */
+    border: black solid 2px;
+    margin: 0px;
+    background: linear-gradient(0deg,rgb(57, 129, 9) 10%, rgb(36, 189, 250) 50%);
+}
+
+header{
+    background-color: bisque;
+    /* border: black solid 2px; */
+    height: 100px;
+    margin: 5px 10vh;
+    margin-bottom: 10px;
+    border-radius: 20px 20px 0px 0px;
+    background-image: url(./css/nature-background.jpg);
+    background-size: cover;
+    box-shadow: rgb(78, 102, 138) 5px 5px 10px;
+    
+}
+
+nav{
+    font-size: 16px;
+    text-align: center;
+    /* margin-block-start: 1px;
+    margin-block-end: 5px;*/
+} 
+
+header p{
+   
+    font-size: 60px;
+    text-align: center;
+    margin-block-start: 1px;
+    margin-block-end: 5px;
+    color: rgb(46, 107, 38);
+    text-shadow: 3px 3px 8px rgb(26, 87, 44);
+}
+
+.content{
+    background-color: transparent;
+    margin: 5px 10vh;
+    margin-bottom: 0px;
+    display: grid;
+    grid-template-columns: 250px 1fr 250px;
+  
+    /* height: 600px; */
+    
+}
+
+.asideLeft,
+.asideRight {
+    /* background-color: rgb(143, 178, 231);  */
+     margin: 0px 10px 10px 0px;
+     height: 800px;
+     box-shadow: rgb(78, 102, 138) 5px 5px 10px;
+     background: linear-gradient(0deg,rgb(144, 199, 89) 20%, rgb(24, 152, 202) 40%);
+     border-radius: 5px;
+}
+.asideRight{
+    margin: 0px 0px 10px 10px;
+}
+
+main{
+    /* background-color: red; */
+    /* width: 60%; */
+    background-image: url(./css/5e930d6c0b8511716e6c6e0f.jpg);
+    margin: 0px 5px;
+    height: 800px; 
+    border-radius: 6px;
+    
+}
+.canvas{
+   
+    background-color: rgba(36, 153, 52, 0.863);
+    /* border: 2px solid black; */
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+}
+
+footer{
+    background-color: bisque;
+    /* border: black solid 2px; */
+    height: 80px;
+    margin: 0px 10vh;
+    background-image: url(./css/footerFon.png);
+    background-size: contain;
+    border-radius: 0px 0px 20px 20px;
+    box-shadow: rgb(28, 39, 30) 5px 5px 10px;
+
+}  
