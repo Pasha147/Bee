@@ -13,7 +13,7 @@ let mousePosi = {
     x: 50,
     y: 50
 }
-// dddddddddddd
+
 const circle = function (x, y, radius, fillCircle) {
     ctx.beginPath()
     ctx.arc(x, y, radius, 0, Math.PI * 2, false)
@@ -42,38 +42,59 @@ $('#canvas').click(cl = (event) => {
     console.log('beeOn', beecOn)
 
     if (beecOn) {
-        center.x = event.pageX
-        center.y = event.pageY
+        center.x = event.offsetX
+        center.y = event.offsetY
     }
     console.log('x=', center.x, '  y=', center.y)
 
 })
 
-$('html').mousemove(mmove = (event) => {
-    mousePosi.x = event.pageX
-   mousePosi.y = event.pageY
+$('#canvas').mousemove(mmove = (event) => {
+     mousePosi.x = event.offsetX
+     mousePosi.y = event.offsetY
 })
 
-const Ball = function() {
-    this.x = 100
-    this.y = 100
-    this.xSpeed = 1
-    this.ySpeed = 2
+function rndab(a, b) {
+
+    return (Math.random() * (b - a)) + a
+
 }
-Ball.prototype.draw = function (){
+
+const Ball = function () {
+    this.x = Math.round(rndab(40, 500))
+    this.y = Math.round(rndab(40, 500))
+    this.xSpeed = rndab(-2, 2)
+    this.ySpeed = rndab(-2, 2)
+}
+Ball.prototype.draw = function () {
     ctx.strokeStyle = "Black"
     ctx.fillStyle = "Black"
     circle(this.x, this.y, 10, true)
 }
-Ball.prototype.move = function (){
-    this.x +=this.xSpeed
-    this.y +=this.ySpeed
+Ball.prototype.move = function () {
+
+    
+
+    if (rndab(0, 100) < 10  && beecOn) {
+        if (center.x > this.x && this.x>40) { this.xSpeed -= rndab(0, 3) }
+        if (center.x < this.x && this.x<cWidth-40) { this.xSpeed += rndab(0, 3) }
+        if (center.y > this.y && this.y>40) { this.ySpeed -= rndab(0, 3) }
+        if (center.y < this.y && this.y<cHeigh-40) { this.ySpeed += rndab(0, 3) }
+    }
+if(this.xSpeed>4) this.xSpeed=4
+if(this.xSpeed<-4) this.xSpeed=-4
+if(this.ySpeed>4) this.ySpeed=4
+if(this.ySpeed<-4) this.ySpeed=-4
+
+    this.x += this.xSpeed
+    this.y += this.ySpeed
+
 }
 Ball.prototype.checkOut = function () {
-    if (this.x<2 || this.x> cWidth-2) {
+    if (this.x < 40 || this.x > (cWidth - 40)) {
         this.xSpeed = - this.xSpeed
     }
-    if (this.y<2 || this.y> cHeigh-2) {
+    if (this.y < 40 || this.y > (cHeigh - 40)) {
         this.ySpeed = - this.ySpeed
     }
 }
@@ -85,25 +106,24 @@ setInterval(function () {
     if (beecOn) {
         ctx.clearRect(0, 0, cWidth, cHeigh)
         drawBee(center.x, center.y)
-        let dxMouse = mousePosi.x - center.x
-        let dyMouse = mousePosi.y - center.y
+        
         let dx1 = 0
         let dy1 = 0
-        let speed = 0.4
-        
+        let speed = 0.6
 
-        if (dxMouse>0) dx1 = speed
-        else {
-            if(dxMouse<0) dx1 = -speed
-        }          
 
-        if (dyMouse>0) dy1=speed
+        if (mousePosi.x > center.x) dx1 = speed
         else {
-            if(dyMouse<0) dy1=-speed
+            if (mousePosi.x < center.x) dx1 = -speed
         }
 
-        let dx = (Math.floor(Math.random() * (3+dx1)) - 1) * 6
-        let dy = (Math.floor(Math.random() * (3+dy1)) - 1) * 6
+        if (mousePosi.y > center.y) dy1 = speed
+        else {
+            if (mousePosi.y < center.y) dy1 = -speed
+        }
+
+        let dx = (Math.floor(Math.random() * (3 + dx1)) - 1) * 6
+        let dy = (Math.floor(Math.random() * (3 + dy1)) - 1) * 6
         if (dx >= 0 || center.x > 10) { center.x += dx }
         if (dy >= 0 || center.y > 10) { center.y += dy }
 
@@ -114,8 +134,8 @@ setInterval(function () {
 
     ball.draw()
     ball.move()
-    ball. checkOut()
-    mousePosi.x=ball.x
-    mousePosi.y=ball.y
+    ball.checkOut()
+    mousePosi.x = ball.x
+    mousePosi.y = ball.y
 
 }, 30)

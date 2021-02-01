@@ -1,0 +1,73 @@
+
+body{
+    background-image: url(./nature-background.jpg);  
+    background-size: contain;   
+    /* position: absolute; */
+    /* top: 0; */
+
+}
+
+.head{
+    height: 180px;
+    /* width: 1200px; */
+    
+   
+    /* background: rgb(199, 216, 47); */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url(./headfon.png);
+    border-radius: 20px 20px 0px 0px;
+    text-align: center;
+    /* filter: blur(10px); */
+
+   
+}
+
+h1 {
+    font-size: 60px;
+    line-height: 10px;
+}
+
+.footer{
+    height: 60px;
+    background: cornflowerblue;
+}
+
+.iteml, 
+.itemr{
+    width: 100px;
+    height: 600px;
+    background: burlywood;
+    margin: 5px;
+}
+.conteiner{
+    display: flex;
+    justify-content: center;
+}
+
+.itemc{
+    margin: 5px;
+    width: 590px;
+    height: 590px;
+    /* background-image: url(./5e930d6c0b8511716e6c6e0f.jpg); */
+    background-color: #58cf62f1;
+    background-size:cover;
+    border: solid 5px green;
+    border-radius: 20px;
+}
+.itemr{
+    width: 300px;
+}
+.canvas {
+    margin: 0px;
+    padding: 0px;
+    background: transparent; 
+    /* border: 2px solid rgb(49, 49, 42); */
+    width: 590px;
+    height: 590px;
+    /* border-radius: 20px; */
+    /* border: 5px solid  red; */
+   
+}
+
