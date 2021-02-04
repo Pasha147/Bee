@@ -1,4 +1,8 @@
 
+html{
+    box-sizing: border-box;
+}
+
 body{
     /* background-color: rgb(228, 153, 62); */
     border: black solid 2px;
@@ -6,11 +10,16 @@ body{
     background: linear-gradient(0deg,rgb(57, 129, 9) 10%, rgb(36, 189, 250) 50%);
 }
 
+a{
+    color:  rgb(46, 107, 38);
+    text-decoration: none;
+}
+
 header{
     background-color: bisque;
     /* border: black solid 2px; */
-    height: 100px;
-    margin: 5px 10vh;
+    height: 150px;
+    /* margin: 5px 10vh; */
     margin-bottom: 10px;
     border-radius: 20px 20px 0px 0px;
     background-image: url(./css/nature-background.jpg);
@@ -19,20 +28,43 @@ header{
     
 }
 
+.conteiner{
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+    position: relative;
+}
+
+.logo{
+   width: 100px; 
+   height: 100px;
+   position: absolute;
+   top: 25px;
+}
+
 nav{
     font-size: 16px;
     text-align: center;
+    width: 970px;
+    margin: 0 auto;
     /* margin-block-start: 1px;
     margin-block-end: 5px;*/
 } 
+.menu_list{
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+}
 
 header p{
    
-    font-size: 60px;
+    font-size: 90px;
+    font-weight: 700;
+    font-family: 'Caveat', cursive;
     text-align: center;
     margin-block-start: 1px;
     margin-block-end: 5px;
-    color: rgb(46, 107, 38);
+    color: rgb(255, 193, 7);
     text-shadow: 3px 3px 8px rgb(26, 87, 44);
 }
 
@@ -59,7 +91,17 @@ header p{
 .asideRight{
     margin: 0px 0px 10px 10px;
 }
+.asideRight div{
+    position: relative;
+}
 
+.input1{
+    transform: rotate(-0.25turn);
+    position: absolute;
+    top: 200px;
+    left: -100px;
+    width: 300px;
+}
 main{
     /* background-color: red; */
     /* width: 60%; */
@@ -77,6 +119,7 @@ main{
     height: 100%;
     border-radius: 6px;
 }
+
 
 footer{
     background-color: bisque;

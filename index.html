@@ -6,28 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ПчеLки</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <header>
-        <p>Кто пчелок уважает !!!</p>
-        <nav>nav</nav>
+    <header class="header">
+        <div class="conteiner">
+            <div class="logo">
+                <a href="#">
+                    <img src="./css/Bee_resize2.png" alt="">
+                </a>
+            </div>
+            <p>Кто пчелок уважает !!!</p>
+
+            <nav class="menu">
+                <ul class="menu_list">
+                    <li><a href="#">HOME</a> </li>
+                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#">HOSTING</a></li>
+                    <li><a href="#">PAGES</a></li>
+                    <li><a href="#">BLOG</a></li>
+                    <li><a href="#">CONTACT US</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <div id = "content" class="content">
+    <div id="content" class="content">
 
         <aside class="asideLeft">
             aside1
         </aside>
         <main id="main">
 
-       
+
 
             <!-- <canvas id="canvas" class="canvas" width="1200" height="600"></canvas> -->
         </main>
         <aside class="asideRight">
-            aside2
+            <div>
+                <input class="input1" type="range" id="volume" 
+                name="volume" min="0" max="100" value="0">
+                <!-- <label for="volume">Volume</label> -->
+            </div>
         </aside>
     </div>
 

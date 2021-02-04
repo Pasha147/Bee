@@ -14,6 +14,7 @@ const ctx = canvas.getContext("2d")
 
 let dist = 300
 let beecOn = false
+let speedBee = 0
 
 let center = {
     x: 50,
@@ -23,6 +24,26 @@ let mousePosi = {
     x: 50,
     y: 50
 }
+
+let input = document.getElementById('volume')
+
+input.addEventListener('change', function(){
+    speedBee=this.value/75
+}, false)
+  
+
+
+// input.addEventListener('change', function(){
+//   //  console.log(this.value)
+   
+// }, false)
+
+
+
+
+
+
+
 
 const circle = function (x, y, radius, fillCircle) {
     ctx.beginPath()
@@ -73,8 +94,8 @@ function rndab(a, b) {
 const Ball = function () {
     this.x = Math.round(rndab(40, 500))
     this.y = Math.round(rndab(40, 500))
-    this.xSpeed = rndab(-4, 4)
-    this.ySpeed = rndab(-4, 4)
+    this.xspeedBee = rndab(-4, 4)
+    this.yspeedBee = rndab(-4, 4)
 }
 Ball.prototype.draw = function () {
     ctx.strokeStyle = "Black"
@@ -88,10 +109,10 @@ Ball.prototype.move = function () {
     }
     if (dist < 350) {
         if (rndab(0, 100) < 7 && beecOn) {
-            if (center.x > this.x && this.x > 40) { this.xSpeed -= rndab(0, 4) }
-            if (center.x < this.x && this.x < cWidth - 40) { this.xSpeed += rndab(0, 4) }
-            if (center.y > this.y && this.y > 40) { this.ySpeed -= rndab(0, 4) }
-            if (center.y < this.y && this.y < cHeigh - 40) { this.ySpeed += rndab(0, 4) }
+            if (center.x > this.x && this.x > 40) { this.xspeedBee -= rndab(0, 4) }
+            if (center.x < this.x && this.x < cWidth - 40) { this.xspeedBee += rndab(0, 4) }
+            if (center.y > this.y && this.y > 40) { this.yspeedBee -= rndab(0, 4) }
+            if (center.y < this.y && this.y < cHeigh - 40) { this.yspeedBee += rndab(0, 4) }
         }
     }
 
@@ -99,28 +120,28 @@ Ball.prototype.move = function () {
 
     if (dist < 100) {
         if (rndab(0, 100) < 5 && beecOn) {
-            this.xSpeed = - this.xSpeed
-            this.ySpeed = - this.ySpeed
+            this.xspeedBee = - this.xspeedBee
+            this.yspeedBee = - this.yspeedBee
         }
 
     }
 
 
-    if (this.xSpeed > 4) this.xSpeed = 4
-    if (this.xSpeed < -4) this.xSpeed = -4
-    if (this.ySpeed > 4) this.ySpeed = 4
-    if (this.ySpeed < -4) this.ySpeed = -4
+    if (this.xspeedBee > 4) this.xspeedBee = 4
+    if (this.xspeedBee < -4) this.xspeedBee = -4
+    if (this.yspeedBee > 4) this.yspeedBee = 4
+    if (this.yspeedBee < -4) this.yspeedBee = -4
 
-    this.x += this.xSpeed
-    this.y += this.ySpeed
+    this.x += this.xspeedBee
+    this.y += this.yspeedBee
 
 }
 Ball.prototype.checkOut = function () {
     if (this.x < 40 || this.x > (cWidth - 40)) {
-        this.xSpeed = - this.xSpeed
+        this.xspeedBee = - this.xspeedBee
     }
     if (this.y < 40 || this.y > (cHeigh - 40)) {
-        this.ySpeed = - this.ySpeed
+        this.yspeedBee = - this.yspeedBee
     }
 }
 
@@ -134,17 +155,17 @@ setInterval(function () {
 
         let dx1 = 0
         let dy1 = 0
-        let speed = 0.6
+        
 
 
-        if (mousePosi.x > center.x) dx1 = speed
+        if (mousePosi.x > center.x) dx1 = speedBee
         else {
-            if (mousePosi.x < center.x) dx1 = -speed
+            if (mousePosi.x < center.x) dx1 = -speedBee
         }
 
-        if (mousePosi.y > center.y) dy1 = speed
+        if (mousePosi.y > center.y) dy1 = speedBee
         else {
-            if (mousePosi.y < center.y) dy1 = -speed
+            if (mousePosi.y < center.y) dy1 = -speedBee
         }
 
         let dx = (Math.floor(Math.random() * (3 + dx1)) - 1) * 6
