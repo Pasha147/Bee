@@ -1,6 +1,5 @@
 
-
-// ===================Create a canvas with width and height================= 
+// ===================Creating a canvas with width and height================= 
 let cWidth = document.getElementById("main").offsetWidth
 let cHeigh = document.getElementById("main").offsetHeight
 const $main = document.querySelector('#main')
@@ -11,26 +10,23 @@ const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 ///===================================
 
-
 let dist = 300
 let beecOn = false
 //let beeAngr = 0
 let numberBee = 0
 
 let center = {
-    x: rndab(50, cWidth-50),
-    y: rndab(50, cHeigh-50)
+    x: rndab(50, cWidth - 50),
+    y: rndab(50, cHeigh - 50)
 }
 let mousePosi = {
     x: 50,
     y: 50
 }
 
-
-
 // ====================Get the Bee angry (input1 asideRight)====================
- let input = document.getElementById('volume')
- let beeAngr=input.value/75
+let input = document.getElementById('volume')
+let beeAngr = input.value / 75
 input.addEventListener('change', function () {
     beeAngr = this.value / 75
 }, false)
@@ -40,18 +36,18 @@ input.addEventListener('change', function () {
 let input2 = document.getElementById('volume2')
 input2.addEventListener('change', function () {
     numberBee = Number(this.value)
-    if (numberBee===0){ beecOn=false
-    }else{beecOn=true } 
-   }, false)
+    if (numberBee === 0) {
+        beecOn = false
+    } else { beecOn = true }
+}, false)
 ///========================================
 
-
-// ==============Create the Bee class============================================
+// ==============Creating the Bee class============================================
 class Bee {
     constructor() {
-        this.center = {  
-            x: rndab(50, cWidth-50),
-            y: rndab(50, cHeigh-50)
+        this.center = {
+            x: rndab(50, cWidth - 50),
+            y: rndab(50, cHeigh - 50)
         }
         this.target = mousePosi
     }
@@ -60,7 +56,6 @@ class Bee {
 
         let dx1 = 0
         let dy1 = 0
-
 
         if (this.target.x > this.center.x) dx1 = beeAngr
         else {
@@ -91,23 +86,15 @@ class Bee {
         circle(x + 5, y - 11, 5, false)
         circle(x - 2, y - 1, 2, false)
         circle(x + 2, y - 1, 2, false)
-
     }
-
 }
 ///========================================================
 
-
-let bee = new Bee()
-let bee2 = new Bee()
-let bee3 = new Bee()
-let bee4 = new Bee()
-let bee5 = new Bee()
-let bee6 = new Bee()
-let bee7 = new Bee()
-let bee8 = new Bee()
-let bee9 = new Bee()
-let bee10 = new Bee()
+//================== Creating the array of the bees ===========================
+let bees = []
+for (let i = 0; i < 10; i++) {
+    bees[i] = new Bee()
+}
 
 
 setInterval(function () {
@@ -117,61 +104,18 @@ setInterval(function () {
 
     if (beecOn) {
 
-        if (numberBee >= 1) {
-            bee.drow()
-            center = bee.calcMove(beeAngr)
+        for (let i = 0; i < numberBee; i++) {
+            bees[i].drow()
+            bees[i].calcMove(beeAngr)
         }
-        if (numberBee >= 2) {
-            bee2.drow()
-            bee2.calcMove(beeAngr)
-        }
-
-        if (numberBee >= 3) {
-            bee3.drow()
-            bee3.calcMove(beeAngr)
-        }
-        if (numberBee >= 4) {
-            bee4.drow()
-            bee4.calcMove(beeAngr)
-        }
-        if (numberBee >= 5) {
-            bee5.drow()
-            bee5.calcMove(beeAngr)
-        }
-        if (numberBee >= 6) {
-            bee6.drow()
-            bee6.calcMove(beeAngr)
-        }
-
-        if (numberBee >= 7) {
-            bee7.drow()
-            bee7.calcMove(beeAngr)
-        }
-        if (numberBee >= 8) {
-            bee8.drow()
-            bee8.calcMove(beeAngr)
-        }
-        if (numberBee >= 9) {
-            bee9.drow()
-            bee9.calcMove(beeAngr)
-        }
-        if (numberBee >= 10) {
-            bee10.drow()
-            bee10.calcMove(beeAngr)
-        }
-
-
+        center = bees[0].center
     }
-
 
     ball.move()
     ball.checkOut()
     mousePosi.x = ball.x
     mousePosi.y = ball.y
-
 }, 30)
-
-
 
 
 function circle(x, y, radius, fillCircle) {
@@ -190,27 +134,23 @@ $('#canvas').click(cl = (event) => {
     beecOn = beecOn ? false : true
 
     if (beecOn) {
-        bee.center.x = event.offsetX
-        bee.center.y = event.offsetY
+        bees[0].center.x = event.offsetX
+        bees[0].center.y = event.offsetY
         numberBee = 1
-        input2.value=1
-
+        input2.value = 1
     } else {
         numberBee = 0
-        input2.value=0
+        input2.value = 0
     }
 })
 
 $('#canvas').mousemove(mmove = (event) => {
     mousePosi.x = event.offsetX
     mousePosi.y = event.offsetY
-
 })
 
 function rndab(a, b) {
-
     return (Math.random() * (b - a)) + a
-
 }
 
 const Ball = function () {
@@ -238,16 +178,12 @@ Ball.prototype.move = function () {
         }
     }
 
-
-
     if (dist < 100) {
         if (rndab(0, 100) < 5 && beecOn) {
             this.xspeedBee = - this.xspeedBee
             this.yspeedBee = - this.yspeedBee
         }
-
     }
-
 
     if (this.xspeedBee > 4) this.xspeedBee = 4
     if (this.xspeedBee < -4) this.xspeedBee = -4
@@ -256,7 +192,6 @@ Ball.prototype.move = function () {
 
     this.x += this.xspeedBee
     this.y += this.yspeedBee
-
 }
 Ball.prototype.checkOut = function () {
     if (this.x < 40 || this.x > (cWidth - 40)) {
