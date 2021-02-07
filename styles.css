@@ -95,11 +95,14 @@ header p{
     position: relative;
 }
 
-.input1{
-    display: block;
+.input1, .input2 {
+    /* display:contents; */
     /* transform: rotate(-0.25turn); */
     /* position: absolute; */
     width: 300px;
+    position: absolute;
+    right: 0px;
+    top: 10px;
    
 }
 .gg{
@@ -108,19 +111,25 @@ header p{
     top: 200px;
      */
 
-     top: 150px;
-     left: -110px;
+     top: 240px;
+     right: 200px;
     transform: rotate(-0.25turn);
-    width: 300px;
+    width: 510px;
 }
 
-.gg1{
-    display: block;
+.gg1, .gg2{
+    /* display: block; */
     text-align: center;
     font-family: 'Caveat', cursive;
-    font-size: 24px;
+    font-size: 28px;
     color: rgb(92, 232, 255);
+    margin: 5px;
+    padding: 5px;
+    
+}
 
+.gg3, .gg4{
+    position: relative;
 }
 
 main{

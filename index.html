@@ -48,10 +48,34 @@
             <!-- <canvas id="canvas" class="canvas" width="1200" height="600"></canvas> -->
         </main>
         <aside class="asideRight">
-            <div class = "gg">
-                <input class="input1" type="range" id="volume" 
-                name="volume" min="-100" max="100" value="0">
-                <label class="gg1" for="volume">Пчелинная ярость</label> 
+            <div class="gg">
+                <div class="gg3">
+                    <label class="gg1" for="volume">Пчелиная ярость</label>
+                    <input class="input1" list="tickmarks1" type="range" id="volume" name="volume" min="-100" max="100"
+                        value="30">
+                    <datalist id="tickmarks1">
+                        <option value="0">
+                    </datalist>
+                </div>
+
+                <div class="gg4">
+                    <label class="gg2" for="volume">Количество пчел</label>
+                    <input class="input2" list="tickmarks2" type="range" id="volume2" name="volume2" 
+                                min="0" max="10"  value="0">
+                    <datalist id="tickmarks2">
+                        <option value="0" label="0">
+                        <option value="1" label="1">
+                        <option value="2" label="2">
+                        <option value="3" label="3">
+                        <option value="4" label="4">
+                        <option value="5" label="5">
+                        <option value="6" label="6">
+                        <option value="7" label="7">
+                        <option value="8" label="8">
+                        <option value="9" label="9">
+                        <option value="10" label="10">
+                    </datalist>
+                </div>
             </div>
         </aside>
     </div>
