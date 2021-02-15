@@ -39,7 +39,23 @@
     <div id="content" class="content">
 
         <aside class="asideLeft">
-            aside1
+
+            <p class="leftP1" id="leftP1">Попробуй авторизироваться</p>
+
+            <form class="form1" id="form1" name="form1">
+                <input defo type="email" class="log" id="inpEm">
+                <label class="emLable">Email</label>
+                <input type="password" class="pass" id="inpPas">
+                <label class="pasLable">password</label>
+                <input type="submit" class="submit" id="submit1">
+            </form>
+            <hr>
+            <button disabled class="saveBtn" id="saveBtn">Сохранить состояние</button>
+            <button disabled class="loadBtn" id="loadBtn">Загрузить состояние</button>
+            <p class="leftP2" id="leftP2">Сохранение и восстановление состояния доступно 
+                только авторизированным пользователям</p>
+
+
         </aside>
         <main id="main">
 
@@ -60,8 +76,8 @@
 
                 <div class="gg4">
                     <label class="gg2" for="volume">Количество пчел</label>
-                    <input class="input2" list="tickmarks2" type="range" id="volume2" name="volume2" 
-                                min="0" max="10"  value="0">
+                    <input class="input2" list="tickmarks2" type="range" id="volume2" name="volume2" min="0" max="10"
+                        value="0">
                     <datalist id="tickmarks2">
                         <option value="0" label="0">
                         <option value="1" label="1">

@@ -88,6 +88,45 @@ header p{
      background: linear-gradient(0deg,rgb(144, 199, 89) 20%, rgb(24, 152, 202) 40%);
      border-radius: 5px;
 }
+
+.leftP1,
+.leftP2{
+    text-align: center;
+    padding: 10px;
+}
+
+.form1{
+    margin: 20px auto;  
+}
+.log,
+.pass,
+.submit{
+    display: block;
+    margin: 5px auto;
+    background-color: #a8e6ff;
+}
+
+.pasLable,
+.emLable{
+   
+    padding: 0px 20px;
+}
+
+.saveBtn,
+.loadBtn{
+    border-radius: 8px;
+    background-color: #a8e6ff;
+    display: block;
+    width: 220px;
+    height: 40px;
+    margin: 5px auto;
+    font-size: 28px;
+    font-family: 'Caveat', cursive;
+}
+
+
+
+
 .asideRight{
     margin: 0px 0px 10px 10px;
 }

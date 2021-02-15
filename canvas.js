@@ -10,10 +10,21 @@ const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext("2d")
 ///===================================
 
+
+const form1 = document.getElementById('form1')
+const inpEm = form1.querySelector('#inpEm')
+const inpPas = form1.querySelector('#inpPas')
+const saveBtn = document.getElementById('saveBtn')
+const loadBtn = document.getElementById('loadBtn')
+let input = document.getElementById('volume')
+let input2 = document.getElementById('volume2')
+
+
 let dist = 300
 let beecOn = false
 //let beeAngr = 0
 let numberBee = 0
+let beeAngr = input.value / 75
 
 let center = {
     x: rndab(50, cWidth - 50),
@@ -24,16 +35,94 @@ let mousePosi = {
     y: 50
 }
 
+
+
+
+
+// saveBtn.disabled = false
+// loadBtn.disabled = false
+
+let save = {
+    numberBee: input2.value,
+    input: input.value
+}
+
+saveBtn.addEventListener('click', (event) => {
+
+    save = {
+        numberBee: input2.value,
+        input: input.value
+    }
+
+    localStorage.setItem('save', JSON.stringify(save))
+
+})
+
+loadBtn.addEventListener('click', (event) => {
+    save = JSON.parse(localStorage.getItem('save'))
+   // console.log(save)
+    
+    input2.value = save.numberBee
+    input.value = save.input
+    numberBee=save.numberBee
+    beecOn=true
+    beeAngr = input.value / 75
+
+})
+
+
+
+
+
+
+
+
+//===========Авторизация=========================================
+form1.addEventListener('submit', (event) => {
+    event.preventDefault()
+    console.log('Imail', inpEm.value)
+    console.log('Pass', inpPas.value)
+
+    const em = inpEm.value
+    const pass = inpPas.value
+
+    const apiKey = 'AIzaSyDJX_ITK73GBllwj9eZQVWTORglRCEaAJ8'
+
+    fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`, {
+        method: 'POST',
+        body: JSON.stringify({ email: em, password: pass, returnSecureToken: true }),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+
+    })
+        .then(response => response.json())
+        .then(response => {
+            const token = response.idToken
+            if (!token) { console.log('нет авторизации') }
+            else {
+                saveBtn.disabled = false
+                loadBtn.disabled = false
+                // console.log('вы авторизированы') 
+                //console.log(response)
+            }
+        })
+
+})
+///==============================================================================
+
+
+
 // ====================Get the Bee angry (input1 asideRight)====================
-let input = document.getElementById('volume')
-let beeAngr = input.value / 75
+
+
 input.addEventListener('change', function () {
     beeAngr = this.value / 75
 }, false)
 ///========================================
 
 // ===============Get the nmber of bees (input2 asideRight)=====================
-let input2 = document.getElementById('volume2')
+
 input2.addEventListener('change', function () {
     numberBee = Number(this.value)
     if (numberBee === 0) {
